@@ -50,6 +50,10 @@ public:
   vector<vector<double> > CalculateVariance(const vector<vector<vector<double> > > &data,
                                                  const vector<vector<double> > & mean);
 
+private:
+  vector<vector<double> > mean_;
+  vector<vector<double> > variance_;
+
 };
 
 #endif /* CLASSIFIER_H_ */

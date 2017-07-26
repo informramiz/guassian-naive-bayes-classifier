@@ -78,18 +78,18 @@ void GNB::train(vector<vector<double>> data, vector<string> labels)
   //  for each sum_value
   //    mean_value[i] = sum_value[i]/values[class][i].size()
   cout << "-----------Calculating mean" << endl;
-  vector<vector<double> > mean = CalculateMean(grouped_classes_data);
+  mean_ = CalculateMean(grouped_classes_data);
 
   //verify size classes count in mean vector
-  assert(mean.size() == possible_labels.size());
+  assert(mean_.size() == possible_labels.size());
   //verify size of features vector in mean vector
-  assert(mean[0].size() == grouped_classes_data[0][0].size());
-  cout << "----------Mean Calculated with classes count " << mean.size() << " and features vector size " << mean[0].size() << endl;
+  assert(mean_[0].size() == grouped_classes_data[0][0].size());
+  cout << "----------Mean Calculated with classes count " << mean_.size() << " and features vector size " << mean_[0].size() << endl;
 
-  for (int clas = 0; clas < mean.size(); ++clas) {
+  for (int clas = 0; clas < mean_.size(); ++clas) {
     cout << "Mean values for " << possible_labels[clas] << " are: ";
-    for (int feature = 0; feature < mean[clas].size(); ++feature) {
-      cout << mean[clas][feature] << ", ";
+    for (int feature = 0; feature < mean_[clas].size(); ++feature) {
+      cout << mean_[clas][feature] << ", ";
     }
     cout << endl;
   }
@@ -109,18 +109,18 @@ void GNB::train(vector<vector<double>> data, vector<string> labels)
   //    variance[class][feature] = squared_sum_value[class][feature]/values[class][i].size()
 
   cout << "-----------Calculating Variance" << endl;
-  vector<vector<double> > variance = CalculateVariance(grouped_classes_data, mean);
+  variance_ = CalculateVariance(grouped_classes_data, mean_);
 
   //verify size classes count in variance vector
-  assert(variance.size() == possible_labels.size());
+  assert(variance_.size() == possible_labels.size());
   //verify size of features vector in variance vector
-  assert(variance[0].size() == grouped_classes_data[0][0].size());
-  cout << "----------Variance Calculated with classes count " << variance.size() << " and features vector size " << variance[0].size() << endl;
+  assert(variance_[0].size() == grouped_classes_data[0][0].size());
+  cout << "----------Variance Calculated with classes count " << variance_.size() << " and features vector size " << variance_[0].size() << endl;
 
-  for (int clas = 0; clas < variance.size(); ++clas) {
+  for (int clas = 0; clas < variance_.size(); ++clas) {
     cout << "Variance values for " << possible_labels[clas] << " are: ";
-    for (int feature = 0; feature < variance[clas].size(); ++feature) {
-      cout << variance[clas][feature] << ", ";
+    for (int feature = 0; feature < variance_[clas].size(); ++feature) {
+      cout << variance_[clas][feature] << ", ";
     }
     cout << endl;
   }
