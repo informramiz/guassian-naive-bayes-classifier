@@ -11,6 +11,7 @@
 #include <fstream>
 #include <math.h>
 #include <vector>
+#include <cassert>
 
 using namespace std;
 
@@ -88,10 +89,27 @@ void UdacityTestCode() {
 
 int main() {
 
-//  UdacityTestCode();
+  vector<vector<double> > X_train = Load_State("./data/train_states.txt");
+  vector<vector<double> > X_test = Load_State("./data/test_states.txt");
+  vector<string> Y_train = Load_Label("./data/train_labels.txt");
+  vector<string> Y_test = Load_Label("./data/test_labels.txt");
+
+  cout << "X_train number of elements " << X_train.size() << endl;
+  cout << "X_train element size " << X_train[0].size() << endl;
+  cout << "Y_train number of elements " << Y_train.size() << endl;
+
   GNB gnb = GNB();
-  int class_label = gnb.IndexOfClass(gnb.possible_labels[2]);
-  std::cout << "Predicted index of label: " << class_label << std::endl;
+  vector<vector<vector<double> > > grouped_classes_data = gnb.GroupClassesData(X_train, Y_train);
+
+  int total = 0;
+  for (int i = 0; i < grouped_classes_data.size() ; ++i) {
+    cout << "Class " << gnb.possible_labels[i] << " has observations: " << grouped_classes_data[i].size() << endl;
+    total += grouped_classes_data[i].size();
+  }
+
+  std::cout << "Total of all grouped obs: " << total << endl;
+  assert(total == X_train.size());
+
   return 0;
 }
 

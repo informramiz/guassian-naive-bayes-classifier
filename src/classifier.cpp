@@ -86,6 +86,23 @@ int GNB::IndexOfClass(const string & class_label) {
   return -1;
 }
 
+vector<vector<vector<double> > > GNB::GroupClassesData(vector<vector<double> > data, vector<string> labels) {
+  //create a big vector to contain grouped data for all possible_labels
+  vector<vector<vector<double> > > class_observations;
+
+  //resize class_observations vector to have same size as number of classes
+  class_observations.resize(possible_labels.size());
+
+  //first lets loop over all the observations we have
+  for (int i = 0; i < data.size(); ++i) {
+    //get the class index based on corresponding label
+    int class_label = this->IndexOfClass(labels[i]);
+    class_observations[class_label].push_back(data[i]);
+  }
+
+  return class_observations;
+}
+
 string GNB::predict(vector<double>)
 {
   /*

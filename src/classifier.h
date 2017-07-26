@@ -36,6 +36,11 @@ public:
 
   string predict(vector<double>);
   /**
+   * Groups the observations based on classes
+   */
+  vector<vector<vector<double> > > GroupClassesData(vector<vector<double> >, vector<string> labels);
+
+  /**
    * Given string label of class returns the index of class
    */
   int IndexOfClass(const string & class_label);
