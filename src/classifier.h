@@ -35,6 +35,10 @@ public:
   void train(vector<vector<double> > data, vector<string>  labels);
 
   string predict(vector<double>);
+  /**
+   * Given string label of class returns the index of class
+   */
+  int IndexOfClass(const string & class_label);
 
 };
 

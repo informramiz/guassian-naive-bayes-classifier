@@ -75,6 +75,17 @@ void GNB::train(vector<vector<double>> data, vector<string> labels)
    */
 }
 
+
+int GNB::IndexOfClass(const string & class_label) {
+  for (int i = 0; i < possible_labels.size(); ++i) {
+    if (this->possible_labels[i] == class_label) {
+      return i;
+    }
+  }
+
+  return -1;
+}
+
 string GNB::predict(vector<double>)
 {
   /*

@@ -88,7 +88,10 @@ void UdacityTestCode() {
 
 int main() {
 
-  UdacityTestCode();
+//  UdacityTestCode();
+  GNB gnb = GNB();
+  int class_label = gnb.IndexOfClass(gnb.possible_labels[2]);
+  std::cout << "Predicted index of label: " << class_label << std::endl;
   return 0;
 }
 
