@@ -125,6 +125,25 @@ void GNB::train(vector<vector<double>> data, vector<string> labels)
     cout << endl;
   }
 
+  //------------------
+  //standard deviation
+  //-----------------
+  cout << "-----------Calculating Standard Deviation" << endl;
+  std_ = CalculateStandardDeviation(variance_);
+
+  //verify size classes count in std vector
+  assert(std_.size() == possible_labels.size());
+  //verify size of features vector in std vector
+  assert(std_[0].size() == grouped_classes_data[0][0].size());
+  cout << "----------Std calculated with classes count " << std_.size() << " and features vector size " << std_[0].size() << endl;
+
+  for (int clas = 0; clas < std_.size(); ++clas) {
+    cout << "Std values for " << possible_labels[clas] << " are: ";
+    for (int feature = 0; feature < std_[clas].size(); ++feature) {
+      cout << std_[clas][feature] << ", ";
+    }
+    cout << endl;
+  }
 }
 
 vector<vector<double> > GNB::CalculateMean(const vector<vector<vector<double> > > &data) {
@@ -232,7 +251,24 @@ vector<vector<vector<double> > > GNB::GroupClassesData(vector<vector<double> > d
   return class_observations;
 }
 
-string GNB::predict(vector<double>)
+vector<vector<double> > GNB::CalculateStandardDeviation(const vector<vector<double> > & variance) {
+  //initialize standard deviation vector of same size as variance
+  vector<vector<double> > std;
+  std.resize(variance.size());
+
+  //go through variance for all classes and for each feature
+  //and calculate std deviation for each class and each feature
+  //by taking sqrt of variance
+  for (int clas = 0; clas < variance.size(); ++clas) {
+    for (int feature = 0; feature < variance[clas].size(); ++feature) {
+      std[clas].push_back(sqrt(variance[clas][feature]));
+    }
+  }
+
+  return std;
+}
+
+string GNB::predict(vector<double> features)
 {
   /*
     Once trained, this method is called and expected to return

@@ -28,7 +28,7 @@ float HelpFunctions::squared(float x) {
  * sigma must be scalar! The parameter std must be positive.
  * The normal pdf is y=f(x;mu,std)= 1/(std*sqrt(2pi)) e[ -(x−mu)^2 / 2*std^2 ]
  *****************************************************************************/
-float HelpFunctions::Normpdf(float x, float mu, float std) {
+float HelpFunctions::Normpdf(double x, double mu, double std) {
   return (ONE_OVER_SQRT_2PI/std)*exp(-0.5*squared((x-mu)/std));
 }
 

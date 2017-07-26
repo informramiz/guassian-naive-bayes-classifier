@@ -29,7 +29,7 @@ public:
    * sigma must be scalar! The parameter std must be positive.
    * The normal pdf is y=f(x;mu,std)= 1/(sqrt(2pi * square(std)) * e ^ [ -(x−mu)^2 / 2*std^2 ]
   *****************************************************************************/
-  float Normpdf(float x, float mu, float std);
+  float Normpdf(double x, double mu, double std);
 
   //function to normalize a vector:
   std::vector<float> NormalizeVector(std::vector<float> inputVector);

@@ -45,14 +45,27 @@ public:
    */
   int IndexOfClass(const string & class_label);
 
+  /**
+   * Calculates mean for all features independently, of all classes, based on all observations
+   */
   vector<vector<double> > CalculateMean(const vector<vector<vector<double> > > &data);
 
+  /**
+   * Calculates variance for all features independently, of all classes, based on all observations
+   */
   vector<vector<double> > CalculateVariance(const vector<vector<vector<double> > > &data,
                                                  const vector<vector<double> > & mean);
+
+  /**
+   * Calculates standard deviation from passed variance
+   */
+  vector<vector<double> > CalculateStandardDeviation(const vector<vector<double> > & variance);
 
 private:
   vector<vector<double> > mean_;
   vector<vector<double> > variance_;
+  vector<vector<double> > std_;
+  HelpFunctions help_functions_;
 
 };
 
