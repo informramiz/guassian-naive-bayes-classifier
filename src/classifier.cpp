@@ -24,6 +24,39 @@ GNB::~GNB() {}
 void GNB::train(vector<vector<double>> data, vector<string> labels)
 {
 
+  //from data, group classes data into different vectors:
+  //so total vectors of type vector<vector<double>>: left_vector, keep_vector, right_vector
+
+  //make a new vector of type: vector<vector<vector<double>>>: values
+
+  //----------
+  //sum values
+  //-----------
+
+  //for each class
+  // for each observation
+  //  for each feature out of total features
+  //    sum_value[class][feature] += values[class][obs][feature]
+
+
+  //----------
+  // Calculate mean
+  //-----------
+
+  //for each class
+  //  for each sum_value
+  //    mean_value[i] = sum_value[i]/values[class][i].size()
+
+  //for each class
+  // for each observation
+  //  for each feature out of total features
+  //    squared_sum_value[class][feature] += pow( (values[class][obs][feature] - mean_value[class][feature]), 2)
+
+
+  //for each class
+  // for each feature
+  //    variance[class][feature] = squared_sum_value[class][feature]/values[class][i].size()
+
   /*
     Trains the classifier with N data points and labels.
 
