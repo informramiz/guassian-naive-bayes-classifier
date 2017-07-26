@@ -39,7 +39,7 @@ void GNB::train(vector<vector<double>> data, vector<string> labels)
 
     labels - array of N labels
       - Each label is one of "left", "keep", or "right".
-  */
+   */
 }
 
 string GNB::predict(vector<double>)
@@ -59,7 +59,7 @@ string GNB::predict(vector<double>)
     be one of "left", "keep" or "right".
     """
     # TODO - complete this
-  */
+   */
 
   return this->possible_labels[1];
 
