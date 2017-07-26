@@ -23,18 +23,17 @@ vector<vector<double> > Load_State(string file_name) {
   while (getline(in_state_, line)) {
     istringstream iss(line);
     vector<double> x_coord;
+
     double state1;
-    double state2;
-    double state3;
-    double state4;
     iss >> state1;
     x_coord.push_back(state1);
-    iss >> state2;
-    x_coord.push_back(state2);
-    iss >> state3;
-    x_coord.push_back(state3);
-    iss >> state4;
-    x_coord.push_back(state4);
+
+    string value;
+    double state;
+    while(getline(iss, value, ',')) {
+      iss >> state;
+      x_coord.push_back(state);
+    }
 
     state_out.push_back(x_coord);
   }
