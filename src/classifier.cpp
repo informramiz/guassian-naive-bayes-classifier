@@ -287,6 +287,27 @@ string GNB::predict(vector<double> features)
     # TODO - complete this
    */
 
-  return this->possible_labels[1];
+  vector<double> class_probs;
+  class_probs.resize(possible_labels.size(), 0.5);
+
+  //use mean and variance of each class to apply Guassian Probability density function
+  for (int clas = 0; clas < possible_labels.size(); ++clas) {
+    for (int feature = 0; feature < features.size(); ++feature) {
+      //multiple probs because we have assumed that features are independent
+      class_probs[clas] *= help_functions_.Normpdf(features[feature], mean_[clas][feature], std_[clas][feature]);
+    }
+  }
+
+  //pick the class with maximum prob
+  int max_class_index = 0;
+  double max_class_prob = class_probs[0];
+  for (int clas = 1; clas < possible_labels.size(); ++clas) {
+    if (max_class_prob < class_probs[clas]) {
+      max_class_index = clas;
+      max_class_prob = class_probs[clas];
+    }
+  }
+
+  return this->possible_labels[max_class_index];
 
 }

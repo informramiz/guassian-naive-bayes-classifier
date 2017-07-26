@@ -13,6 +13,7 @@
 #include <fstream>
 #include <math.h>
 #include <vector>
+#include "help_functions.h"
 
 using namespace std;
 
