@@ -99,16 +99,7 @@ int main() {
   cout << "Y_train number of elements " << Y_train.size() << endl;
 
   GNB gnb = GNB();
-  vector<vector<vector<double> > > grouped_classes_data = gnb.GroupClassesData(X_train, Y_train);
-
-  int total = 0;
-  for (int i = 0; i < grouped_classes_data.size() ; ++i) {
-    cout << "Class " << gnb.possible_labels[i] << " has observations: " << grouped_classes_data[i].size() << endl;
-    total += grouped_classes_data[i].size();
-  }
-
-  std::cout << "Total of all grouped obs: " << total << endl;
-  assert(total == X_train.size());
+  gnb.train(X_train, Y_train);
 
   return 0;
 }

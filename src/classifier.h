@@ -45,6 +45,11 @@ public:
    */
   int IndexOfClass(const string & class_label);
 
+  vector<vector<double> > CalculateMean(const vector<vector<vector<double> > > &data);
+
+  vector<vector<double> > CalculateVariance(const vector<vector<vector<double> > > &data,
+                                                 const vector<vector<double> > & mean);
+
 };
 
 #endif /* CLASSIFIER_H_ */
